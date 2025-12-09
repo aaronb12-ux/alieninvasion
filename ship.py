@@ -28,7 +28,6 @@ class Ship(Sprite):
         
         #Storing a decimal value for the ships center. We take the original center and convert it to a float using the float function
         self.center = float(self.rect.centerx)
-
         self.moving_right = False
         self.moving_left = False
     

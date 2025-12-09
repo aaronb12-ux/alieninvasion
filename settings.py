@@ -10,7 +10,7 @@ class Settings():
         self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
-        self.bullet_color = 60, 60, 60
+        self.bullet_color = 255, 255, 255
         self.bullets_allowed = 3
         self.alien_speed_factor = 1
         #controls how quickly the fleet drops down the screen each time an alien reaches either edge

@@ -2,7 +2,6 @@
 import pygame.font
 
 
-
 class Button():
     
     def __init__(self, ai_settings, screen, msg):
@@ -12,8 +11,8 @@ class Button():
 
         #set the dimensions and properties of the button
         self.width, self.height = 200, 50
-        self.button_color = (0, 255, 0)
-        self.text_color = (255, 255, 255)
+        self.button_color = (255, 255, 255)
+        self.text_color = (0, 0, 0)
         #creating the font with default 'None' and size 48
         self.font = pygame.font.SysFont(None, 48)
 

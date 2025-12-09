@@ -84,7 +84,7 @@ def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_bu
     """Update images on the screen and flip to the new screen"""
     #Redraw the screen during each pass through the loop
     screen.fill((0,0,0))
-    screen.blit(background, (0,30))
+    screen.blit(background, (0,0))
     #tbe bullets.sprites() method returns a list of all sprites in the group 'bullets'
     for bullet in bullets.sprites():
         #draw_bullets() is a method that draws the bullets to the screen
