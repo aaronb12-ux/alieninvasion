@@ -4,6 +4,7 @@ import json
 from alien import Alien
 from bullet import Bullet
 from time import sleep #pauses the game
+import os
 
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets, sb):
@@ -20,9 +21,11 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets, sb):
             new_bullet = Bullet(ai_settings, screen, ship)
             bullets.add(new_bullet)
     elif event.key == pygame.K_q:
-        filename = 'highscore.json'
-        with open(filename, 'w') as f_object:
-            json.dump(sb.stats.high_score, f_object)
+        filename = 'highscore.txt'
+        with open(filename, 'r+') as f_object:
+             f_object.seek(0)
+             f_object.truncate()
+             f_object.write(str(sb.stats.high_score))
         sys.exit()
 
 def check_keyup_events(event, ship):
@@ -36,9 +39,11 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bull
     """Respond to key-presses and mouse events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            filename = 'highscore.json'
-            with open(filename, 'a') as f_object:
-                json.dump(sb.stats.high_score, f_object)
+            filename = 'highscore.txt'
+            with open(filename, 'r+') as f_object:
+                 f_object.seek(0)
+                 f_object.truncate()
+                 f_object.write(str(sb.stats.high_score))
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             #if there's a keydown event
@@ -229,10 +234,11 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
         sleep(0.5)
     else:
         stats.game_active = False
-
-        with open("highscore.json", 'w') as f_object:
-            json.dump("", f_object)
-            json.dump(sb.stats.high_score, f_object)
+ 
+        with open("highscore.txt", 'r+') as f_object:
+            f_object.seek(0)
+            f_object.truncate()
+            f_object.write(str(sb.stats.high_score))
         pygame.mouse.set_visible(True)
 
 def check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets):

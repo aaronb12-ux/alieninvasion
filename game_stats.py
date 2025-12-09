@@ -12,7 +12,7 @@ class GameStats():
         #high score should never be reset
 
         #load the high score from the json file
-        filename = 'highscore.json'
+        filename = 'highscore.txt'
         with open(filename, 'r') as f_obj:
             
                 high_score = json.load(f_obj)
